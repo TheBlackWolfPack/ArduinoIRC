@@ -70,6 +70,11 @@ boolean IRCClient::loop() {
 void IRCClient::parse(String data) {
   IRCMessage ircMessage(data);
 
+  if (data[0] == '@') {
+	ircMessage.twitchtags = data.substring (1, data.indexOf(" ") - 1);
+	data = data.substring ( data.indexOf (" ") + 1);
+  }
+
   if (data[0] == ':') {
     ircMessage.prefix = data.substring(1, data.indexOf(" ") - 1);
     int index = ircMessage.prefix.indexOf("@");

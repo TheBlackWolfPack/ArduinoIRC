@@ -18,6 +18,7 @@ struct IRCMessage {
     original(data) {};
 
   String original;
+  String twitchtags;
   String prefix;
   String nick;
   String user;
